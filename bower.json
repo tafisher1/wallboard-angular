@@ -1,0 +1,17 @@
+{
+  "name": "xpx.wallboard",
+  "description": "A frontend project for Xpanxion",
+  "version": "0.0.0",
+  "homepage": "https://github.com/xpanxion/xpx.wallboard",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-loader": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "html5-boilerplate": "~5.2.0",
+    "bootstrap": "~3.3.6",
+    "angular-hateoas": "~0.2.5",
+    "angular-resource": "~1.4.8"
+  }
+}
