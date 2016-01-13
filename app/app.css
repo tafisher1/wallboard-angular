@@ -28,3 +28,8 @@
   content: "";
   padding: 0;
 }
+
+body {
+  margin-top: 1em;
+  margin-left: 1em;
+}
