@@ -2,11 +2,11 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="everest.admin" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" data-ng-app="everest.admin" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Everst Admin Panel</title>
+  <title>Everest Admin Panel</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
@@ -16,18 +16,18 @@
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-controller="RootController as root">
+<body data-ng-controller="RootController as root">
 
 <nav class="navbar navbar-default">
     <ul class="nav navbar-nav" >
-    <li ng-repeat="option in root.options" class="{{option.active}}"><a href="{{option.url}}" ng-click="root.changeUrl(option.url)">{{option.name}}</a></li>
+    <li data-ng-repeat="option in root.options" class="{{option.active}}"><a href="{{option.url}}" data-ng-click="root.changeUrl(option.url)">{{option.name}}</a></li>
   </ul>
 </nav>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  <div data-ng-view></div>
 
   <div>Everest Admin App: v{{root.version}}</div>
 
