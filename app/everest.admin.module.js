@@ -4,6 +4,7 @@
 angular
 	.module('everest.admin', [
 		'ngRoute',
-		'everest.rest',
-	]);
+        'employee.view',
+        'ngResource'
+    ]);
 })();

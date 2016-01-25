@@ -44,6 +44,11 @@ var HomePage = function() {
 };
 
 describe('home page', function() {
+    beforeEach(function() {
+        browser.addMockModule('everest.rest.service.mock', function () {
+            angular.module('everest.rest.service.mock');
+        });
+    });
 
     var home = new HomePage();
 
@@ -64,7 +69,7 @@ describe('home page', function() {
         it('should switch selected item when nav bar is clicked', function() {
             home.selectNavBarItemIdentifedBy('Employees');
             expect(home.getActiveNavBarItemText()).toEqual('Employees');
-            home.checkForCurrentUrl('/home');
+            home.checkForCurrentUrl('/employee');
 
             home.selectNavBarItemIdentifedBy('Home');
             expect(home.getActiveNavBarItemText()).toEqual('Home');
@@ -75,8 +80,9 @@ describe('home page', function() {
         it('selected navbar item should switch when buttons in home page are clicked.', function() {
             home.clickEmployeesButton();
             expect(home.getActiveNavBarItemText()).toEqual('Employees');
-            home.checkForCurrentUrl('/home');
+            home.checkForCurrentUrl('/employee');
 
+            home.get();
             home.clickHomeButton();
             expect(home.getActiveNavBarItemText()).toEqual('Home');
             home.checkForCurrentUrl('/home');
