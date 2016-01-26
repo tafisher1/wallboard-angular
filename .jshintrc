@@ -66,6 +66,7 @@
       "$": false,
       "element": false,
       "browser": false,
-      "by": false
+      "by": false,
+      "spyOn" : false
     }
 }
