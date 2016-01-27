@@ -5,12 +5,12 @@ angular
 	.module('everest.rest')
 	.factory('everestService',  everestService);
 
-everestService.$inject = ['$resource', '$http'];
+everestService.$inject = ['$http', '$log'];
 
-function everestService($resource, $http) {
+function everestService($http, $log) {
 
     // TODO Configure these elsewhere
-    var EVEREST_URL = 'http://localhost:8080/api';
+    var EVEREST_URL = 'http://127.0.0.1:8080/api';
     var EVEREST_TOKEN = '5d89az-x8a7q264-115z9fpq-91acq4';
     var service = {
         get : get
@@ -20,12 +20,11 @@ function everestService($resource, $http) {
     function get(url) {
         var request = $http({
             method: 'GET',
-            url: url,
+            url: EVEREST_URL + url,
             headers: {
                 'X-AUTH-TOKEN': EVEREST_TOKEN
             }
         });
-
         return request.then(handleSuccess, handleFailure);
     }
 
@@ -34,7 +33,7 @@ function everestService($resource, $http) {
     }
 
     function handleFailure(response) {
-        console.log(response);
+        $log.error(response);
     }
 	}
 

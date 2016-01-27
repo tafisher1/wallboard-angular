@@ -8,7 +8,6 @@ describe('root.controller', function() {
     }));
 
     describe('RootController', function() {
-        var $scope;
         var controller;
 
         beforeEach(function() {
@@ -21,8 +20,10 @@ describe('root.controller', function() {
                 expect(controller.options.length).toEqual(2);
                 expect(controller.options[0].name).toEqual('Home');
                 expect(controller.options[0].active).toEqual('active');
+                expect(controller.options[0].url).toEqual('#/home');
                 expect(controller.options[1].name).toEqual('Employees');
                 expect(controller.options[1].active).toEqual('');
+                expect(controller.options[1].url).toEqual('#/employee');
             });
         });
 
