@@ -1,0 +1,43 @@
+<div class="container central-container">
+  <div class="container">
+    <h3 class="text-center">Welcome to Wallboard!</h3>
+    <h5 class="no-btm-margin">Starting Wallboard</h5>
+    <p>
+      To start Wallboard, simply select the specific Wallboard View you wish to display from the list below. 
+      The Wallboard data will be periodically updated, so no need to refresh the screen.
+      <br>
+      <small><strong>Note:</strong> For best performance, please use screen size greater than 1366x768.</small>
+    </p>
+       
+    <h5 class="no-btm-margin">Need Assistance?</h5>
+    <p>
+      Please contact your local Wallboard Administrator.
+    </p>
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="localeSelector" class="dropdown">
+	      <button class="btn btn-primary dropdown-toggle form-control" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+	        Please select a Wallboard
+	        <span class="caret"></span>
+	      </button>
+	      <ul class="dropdown-menu full-menu scrollable-menu" role="menu" aria-labelledby="dropdownMenu1">
+			  <li role="presentation" data-ng-repeat="locale in vm.locales">
+			    <a role="menuitem" tabindex="-1" href="#/wall/{{locale.name.toLowerCase()}}/home">
+			      {{locale.name}}
+			    </a>
+			  </li>
+ 		  </ul>
+ 		</div>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <p class="text-right"><a href="/app/everest-admin">Goto Everest Admin Portal</a></p>
+    
+  </div>
+</div>
+
+<div id="loadingModal">
+  <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+</div>

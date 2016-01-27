@@ -8,10 +8,17 @@
                 'app/bower_components/angular-route/angular-route.js',
                 'app/bower_components/angular-mocks/angular-mocks.js',
                 'app/bower_components/angular-resource/angular-resource.js',
-                'app/components/**/*.js',
-                'app/views/**/*.module.js',
-                'app/views/**/*.js',
-                'app/*.js',
+                
+                'app/wallboard/wallboard.module.js',
+                'app/wallboard/components/**/*.js',
+                'app/wallboard/views/**/*.module.js',
+                'app/wallboard/views/**/*.js',
+                'app/wallboard/*.js',
+                
+                'app/everest-admin/components/**/*.js',
+                'app/everest-admin/views/**/*.module.js',
+                'app/everest-admin/views/**/*.js',
+                'app/everest-admin/*.js'
             ],
 
             autoWatch : true,

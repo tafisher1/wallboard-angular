@@ -1,4 +1,4 @@
-describe('Everst Rest Service', function () {
+describe('Everest Rest Service', function () {
     var $httpBackend, getRequestHandler;
     beforeEach(module('everest.rest'));
 
@@ -22,7 +22,7 @@ describe('Everst Rest Service', function () {
             $httpBackend.flush();
         });
 
-        it('Should return a valud response on get to /test', inject(function (everestService) {
+        it('Should return a valid response on get to /test', inject(function (everestService) {
             everestService.get('/test').then(function(data) {
                 expect(data).toEqual('test response');
             });
