@@ -8,10 +8,6 @@
 	
 	function routeConfig($routeProvider) {
 		
-		$routeProvider.when('/' , {
-			templateUrl: 'views/home/home.html'
-		});
-		
 		$routeProvider.when('/home' , {
 			templateUrl: 'views/home/home.html'
 		});
@@ -21,7 +17,7 @@
 	        controller:'EmployeeController', 
 	        controllerAs:'employee'});
 	    
-	    $routeProvider.otherwise({redirectTo: '/'});
+	    $routeProvider.otherwise({redirectTo: '/home'});
 	}
 
 })();
