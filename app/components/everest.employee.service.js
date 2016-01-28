@@ -10,13 +10,23 @@
     /* @ngInject */
     function employeeService(everestService) {
         var service = {
-            listEmployees: listEmployees
+            listEmployees: listEmployees,
+            getEmployee: getEmployee,
+            getEmployeeLocale: getEmployeeLocale
         };
 
         return service;
 
         function listEmployees() {
             return everestService.get('/data/employees');
+        }
+
+        function getEmployee(employeeId) {
+            return everestService.get('/data/employees/' + employeeId);
+        }
+
+        function getEmployeeLocale(employeeId) {
+            return everestService.get('/data/employees/' + employeeId + '/locale');
         }
 
     }
