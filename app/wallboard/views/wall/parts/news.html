@@ -1,15 +1,14 @@
-<!--
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" type="text/css" href="css/news.css">
-<script type="text/javascript" src="js/news.js"></script>
-<script type="text/javascript"> 
-	var newsRefreshRate = ${newsRefreshRate};
-	var stockTickersEnabled = ${stockTickersEnabled};
-</script>
-
-  <div id="tabs-news" >
-    <div class="news-content" id="tabs-news-content"></div>
+<div id="tabs-news" >
+  <div class="news-content" id="tabs-news-content">
+    <div class="news-item" data-ng-repeat="newsItem in vm.locale.news">
+      <span class="title">{{newsItem.title}}</span>
+      <span class="link">{{newsItem.link}}</span>
+      <span class="content">{{newsItem.contentSnippet}}</span>
+      <span class="title"></span>
+    </div>
   </div>
+</div>
+<!-- 
   <c:if test="${stockTickersEnabled}">
   <div id="tabs-tickers">
   	<div id="tickerHeader">Stock Info</div>

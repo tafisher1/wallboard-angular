@@ -1,0 +1,35 @@
+#tabs-news,#tabs-tickers-content {
+	overflow: hidden;
+	color: white;
+}
+
+#newsTabs {
+	overflow: hidden;
+	background-color: transparent;
+	background-image: none;
+	border: none;
+}
+
+#tabs-news table,#tabs-news a,#tabs-profiles-content table,#tabs-profiles-content a,#newsHead
+	{
+	color: white;
+	text-decoration: none;
+}
+
+/* .news-content table, .news-content a, #newsHead { */
+/*   	margin: 0; */
+/* 	color: white; */
+/* 	text-decoration: none; */
+/* } */
+/* .tabHeader{ */
+/* 	background: none; */
+/* } */
+#newsHeader {
+	position: fixed;
+	font-size: 400%;
+	top: 53%;
+	left: -1%;
+	transform: rotate(270deg);
+	-ms-transform: rotate(270deg); /* IE 9 */
+	-webkit-transform: rotate(270deg); /* Safari and Chrome */
+}

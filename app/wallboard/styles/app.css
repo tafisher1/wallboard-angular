@@ -1,35 +1,344 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+/* For the header */
+td.welcome {
+	position: absolute;
+	font-weight: bold;
+	color: white;
+	font-size: 3.75em;
+	font-weight: heavy;
+	text-align: center;
+	top: 10%;
+	left: 45%;
 }
 
-.menu:before {
-  content: "[";
+img.logo {
+	position: absolute;
+	left: -5%;
+	width: 95%;
+	top: -12%;
+	/*     -moz-animation: logoframes 20s linear 0s infinite normal; */
+	/*     -webkit-animation: logoframes 20s linear 1s infinite normal; */
 }
 
-.menu:after {
-  content: "]";
+td.adminHeader {
+	color: white;
+	font-size: 12pt;
+	text-align: center
 }
 
-.menu > li {
-  display: inline;
+#greetingPanel {
+	position: absolute;
+	border: 2px outset;
+	border-radius: 20px;
+	height: 20%;
+	/*     width: 98%; */
 }
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+#greeting {
+	color: white;
+	font-size: 300%;
+}
+/* For the local weather panel */
+#localInfo {
+	position: absolute;
+	border: 2px outset;
+	border-radius: 20px;
+	height: 20%;
+	top: 22%;
 }
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+#localWeather2 {
+	width: 15.5%;
+	left: 35%;
+}
+
+#localWeather {
+	width: 15.5%;
+}
+
+#localWeather3 {
+	width: 15.5%;
+	left: 70%;
+}
+/* For the News panel. Separate CSS for inside elements */
+#newsPanel {
+	position: absolute;
+	border: 2px outset;
+	border-radius: 20px;
+	height: 41%;
+	top: 43.25%;
+}
+/* For the StockTicker panel. Separate CSS for inside elements */
+#stockPanel {
+	position: absolute;
+	border: 2px outset;
+	border-radius: 20px;
+	height: 41%;
+	top: 43.25%;
+}
+/* For the weather toaster. Separate CSS for inside elements */
+#otherWeather {
+	border-radius: 20px;
+	border: 2px outset;
+	position: absolute;
+	height: 13.5%;
+	top: 85.5%;
+}
+/* For the profile panel. Separate CSS for inside elements */
+#profilePanel {
+	position: absolute;
+	overflow: hidden;
+	border: 2px outset;
+	border-radius: 20px;
+	padding-bottom: 3px;
+}
+/* General styling */
+p {
+	text-align: center;
+	padding: 10px 0 0 0;
 }
 
 body {
-  margin-top: 1em;
-  margin-left: 1em;
+	background-color: black;
+	font-family: verdana, helveticva !important;
+	color: white;
+	background-size: cover;
+	overflow: hidden;
+}
+
+body.admin {
+	margin: 13;
+	padding: 13;
+}
+
+table {
+	padding: 0px;
+}
+
+h2 {
+	margin: 5;
+	font-size: 30pt;
+}
+
+.semiTransparent {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.left {
+	left: 1%;
+	width: 46%;
+}
+
+.right {
+	left: 48%;
+	width: 51%;
+}
+/* Not really used */
+#clocksPanel {
+	position: absolute;
+	border: 2px outset;
+	border-radius: 20px;
+	width: 45%;
+	height: 39%;
+	font-size: 30pt;
+}
+@
+-moz-keyframes logoframes { 0% {
+	-moz-transform: skewY(0deg) scale(1, 1)
+}
+
+12%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(0
+,
+1)
+}
+25%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(-1
+,
+1)
+}
+37%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(0
+,
+1)
+}
+50%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(1
+,
+1)
+}
+100%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(1
+,
+1)
+}
+}
+@
+-webkit-keyframes logoframes { 0% {
+	-webkit-transform: rotateY(0deg)
+}
+
+25%
+{
+-webkit-transform
+:
+ 
+rotateY
+(180deg)
+}
+50%
+{
+-webkit-transform
+:
+ 
+rotateY
+(0deg)
+}
+100%
+{
+-webkit-transform
+:
+ 
+rotateY
+(0deg)
+}
+}
+@
+-moz-keyframes logoframes { 0% {
+	-moz-transform: skewY(0deg) scale(1, 1)
+}
+
+12%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(0
+,
+1)
+}
+25%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(-1
+,
+1)
+}
+37%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(0
+,
+1)
+}
+50%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(1
+,
+1)
+}
+100%
+{
+-moz-transform
+:
+ 
+skewY
+(0deg)
+ 
+scale
+(1
+,
+1)
+}
+}
+@
+-webkit-keyframes logoframes { 0% {
+	-webkit-transform: rotateY(0deg)
+}
+25%
+{
+-webkit-transform
+:
+ 
+rotateY
+(180deg)
+}
+50%
+{
+-webkit-transform
+:
+ 
+rotateY
+(0deg)
+}
+100%
+{
+-webkit-transform
+:
+ 
+rotateY
+(0deg)
+}
 }

@@ -19,6 +19,7 @@
 	function WallController(everestService, $routeParams) {
 		
 		var vm = this;
+		vm.allLocales = [];
 		vm.getViews = getViews;
 		vm.locale = {};
 		
@@ -30,6 +31,8 @@
 		 * @desc Activation method that is called at the end of controller initialization.
 		 */
 		function activate() {
+			
+			// Load the initial locale.
 			loadLocaleFromRequest().then(function() {
 				var urls = vm.locale._links;
 				
@@ -53,6 +56,21 @@
 					everestService.getFrom(urls.weather.href).then(function(data) {
 						vm.locale.weather = data;
 					});
+				}
+				
+				$('body').attr('style', 'background-image: url("' + vm.locale.backgroundUrl + '")');
+			});
+			
+			// Load the locale and weather information for all other locales
+			everestService.getAllLocales().then(function(data) {
+				vm.allLocales = data;
+				for(var i in vm.allLocales) {
+					(function(x) {
+						vm.allLocales[x].weather = {};
+						everestService.getFrom(vm.allLocales[x]._links.weather.href).then(function(weatherData) {
+							vm.allLocales[x].weather = weatherData;
+						});
+					})(i);
 				}
 			});
 		}

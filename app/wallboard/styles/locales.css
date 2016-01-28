@@ -1,0 +1,26 @@
+.localeName {
+	text-align: right;
+	padding-right: 15px;
+}
+.localeTime {
+	text-align: right;
+}
+.localeTemp {
+	text-align: center;
+}
+.localeImage img {
+	height: 150px;
+	width: 150px;
+}
+.locale {
+	border-radius: 20px;
+	font-size: 3.5em;
+	height: 100%;
+	width: 100%;
+}
+.locale table {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	border-radius: 20px;
+}

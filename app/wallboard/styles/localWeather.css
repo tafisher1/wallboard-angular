@@ -1,0 +1,51 @@
+.localTemp,.localImage {
+	text-align: center;
+	min-width: 45%;
+	text-shadow: 2px 2px #999999;
+}
+.localImage img {
+	height: 125px;
+	width: 125px;
+}
+.forecastTemp {
+	font-size: 85%;
+	text-align: right;
+}
+.local {
+	background-color: rgba(0, 0, 55, 0.15);
+	positon: absolute;
+	margin-top: 18%;
+	height: 100%;
+	font-size: 3.5em;
+	width: 100%;
+	border: 2px inset;
+	border-radius: 20px;
+	border-collapse: initial;
+}
+.localHeader {
+	position: absolute;
+	font-weight: bold;
+	color: white;
+	font-size: 250%;
+	font-weight: heavy;
+	text-align: left;
+	vertical-align: top;
+	left: 8%;
+}
+.localTime {
+	position: absolute;
+	font-weight: bold;
+	color: white;
+	font-size: 220%;
+	font-weight: heavy;
+	vertical-align: top;
+	left: 77%;
+}
+#weatherHeader {
+	font-size: 44%;
+	max-width: 20px;
+	vertical-align: left;
+	transform: translate(0, 50px);
+	-ms-transform: translate(0, 50px); /* IE 9 */
+	-webkit-transform: translate(0, 50px); /* Safari and Chrome */
+}
