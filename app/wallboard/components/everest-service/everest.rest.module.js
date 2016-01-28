@@ -1,5 +1,5 @@
 (function() {
 'use strict';
 angular
-	.module('everest.rest', ['ngResource']);
+	.module('everest.rest', []);
 })();
