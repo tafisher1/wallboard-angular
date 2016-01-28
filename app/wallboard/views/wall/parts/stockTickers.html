@@ -1,0 +1,26 @@
+<!-- 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="css/stockTickers.css" />
+
+<div id="ticker">
+	<c:forEach items="${locale.tickers}" var="stockTicker" varStatus="index">
+		<c:choose>
+			<c:when test="${stockTicker.upOrDown}">
+				<div>
+					<img class="arrow" src="images/up.png">
+					${stockTicker.name} <span class="percentChange">[${stockTicker.changePercent}]</span>
+					[${stockTicker.lastPrice}]
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div>
+					<img class="arrow" src="images/down.png">
+					${stockTicker.name} <span class="percentChange">[${stockTicker.changePercent}]</span>
+					[${stockTicker.lastPrice}]
+				</div>
+			</c:otherwise>
+		</c:choose>
+	</c:forEach>
+</div>
+-->

@@ -1,0 +1,17 @@
+img.logos {
+	position: absolute;
+	height: 180%;
+	left: -2.5%;
+	top: -12%;
+}
+
+#greetings {
+	position: absolute;
+	font-weight: bold;
+	color: white;
+	font-size: 300%;
+	font-weight: heavy;
+	text-align: center;
+	top: 10%;
+	left: 45%;
+}

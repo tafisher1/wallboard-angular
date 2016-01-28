@@ -1,0 +1,21 @@
+<!--
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="css/news.css">
+<script type="text/javascript" src="js/news.js"></script>
+<script type="text/javascript"> 
+	var newsRefreshRate = ${newsRefreshRate};
+	var stockTickersEnabled = ${stockTickersEnabled};
+</script>
+
+  <div id="tabs-news" >
+    <div class="news-content" id="tabs-news-content"></div>
+  </div>
+  <c:if test="${stockTickersEnabled}">
+  <div id="tabs-tickers">
+  	<div id="tickerHeader">Stock Info</div>
+	<div id="tabs-tickers-content">
+		<%@ include file="../parts/stockTickers.jsp" %>
+	</div>
+  </div>
+  </c:if>
+-->

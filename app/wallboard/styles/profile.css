@@ -1,0 +1,20 @@
+.profileHeader {
+	font-size: 3.25em;
+	text-align: center;
+	width: 100%;
+}
+
+.profileImage {
+	float: left;
+	margin: 1em 1em 1em 0em;
+	border-radius: 10px;
+}
+
+.profileBlurb p {
+	font-size: 1.72em;
+	text-align: left;
+}
+
+.profile {
+	padding: 1%;
+}

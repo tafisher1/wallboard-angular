@@ -1,0 +1,48 @@
+<!-- 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" type="text/css" href="/css/localWeather.css" />
+
+<table>
+	<tr>
+		<th colspan=2><div class="localHeader">${locale.name}</div></th>
+		<th><div class="localTime">${locale.time}</div></th>
+	</tr>
+	<tr>
+		<td id="localWeather">
+			<table id="${locale.name}" class="local">
+				<tr>
+					<td><div id="weatherHeader">Current</div></td>
+					<td class="localImage"><img
+						src="http://s.imwx.com/v.20120328.084208/img/wxicon/120/${locale.weather.condition.icon}.png" /></td>
+					<td class="localTemp">${locale.weather.currentTemp}</td>
+				</tr>
+			</table>
+		</td>
+		<td id="localWeather2">
+			<table id="${locale.name}" class="local">
+				<tr>
+					<td><div id="weatherHeader">Tomorrow</div></td>
+					<td class="localImage"><img
+						src="http://s.imwx.com/v.20120328.084208/img/wxicon/120/${locale.weather.tomorrowCondition.icon}.png" /></td>
+					<td class="forecastTemp"><div
+							style="text-shadow: 2px 2px #ff1919">${locale.weather.tomorrowHigh}</div>
+						<div style="text-shadow: 2px 2px #6699cc">${locale.weather.tomorrowLow}</div></td>
+				</tr>
+			</table>
+		</td>
+		<td id="localWeather3">
+			<table id="${locale.name}" class="local">
+				<tr>
+					<td><div id="weatherHeader">${locale.weather.dayAfterDate}</div></td>
+					<td class="localImage"><img
+						src="http://s.imwx.com/v.20120328.084208/img/wxicon/120/${locale.weather.dayAfterCondition.icon}.png" /></td>
+					<td class="forecastTemp"><div
+							style="text-shadow: 2px 2px #ff1919">${locale.weather.dayAfterHigh}</div>
+						<div style="text-shadow: 2px 2px #6699cc">${locale.weather.dayAfterLow}</div></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+-->

@@ -21,9 +21,10 @@
 	    var EVEREST_TOKEN = '5d89az-x8a7q264-115z9fpq-91acq4';
 	    
 	    var service = {
-	        get 			: get,
-	        getAllLocales	: getAllLocales,
-	        getLocaleByName : getLocaleByName
+	        get 					: get,
+	        getAllLocales			: getAllLocales,
+	        getFrom					: getFrom,
+	        getLocaleByName 		: getLocaleByName
 	    };
 	    
 	    return service;
@@ -32,20 +33,13 @@
 	    /**
 	     * @name get
 	     * @memberOf Factories.EverestService
-	     * @param {String} url The url from which to retrieve data.
+	     * @param {String} url The url endpoint from which to retrieve data. Prepends the everest gateway to URL
+	     * prior to making the request.
 	     * @returns {Promise}
 	     * @desc Fetches and returns the data from the provided url.
 	     */
 	    function get(url) {
-	        var request = $http({
-	            method: 'GET',
-	            url: EVEREST_URL + url,
-	            headers: {
-	                'X-AUTH-TOKEN': EVEREST_TOKEN
-	            }
-	        });
-	
-	        return request.then(handleSuccess, handleFailure);
+	        return service.getFrom(EVEREST_URL + url);
 	    }
 	
 	    /**
@@ -60,6 +54,25 @@
 	    		.then(function(response) {
 	    			return response._embedded.locales;
 	    		});
+	    }
+	    
+	    /**
+	     * @name getFrom
+	     * @memberOf Factories.EverestService
+	     * @param {String} url The url from which to retrieve data.
+	     * @returns {Promise}
+	     * @desc Fetches and returns the data from the provided url.
+	     */
+	    function getFrom(url) {
+	    	var request = $http({
+	            method: 'GET',
+	            url: url,
+	            headers: {
+	                'X-AUTH-TOKEN': EVEREST_TOKEN
+	            }
+	        });
+	
+	        return request.then(handleSuccess, handleFailure);
 	    }
 	    
 	    /**

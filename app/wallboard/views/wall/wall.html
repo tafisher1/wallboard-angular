@@ -1,3 +1,22 @@
+<!-- <body style="background-image: url('<c:out value="${locale.backgroundUrl}" />');"> -->
 <div class="container-fluid">
-  <p>This is the Locale view for {{vm.locale.name}}</p>
+    <p>This is the Locale view for {{vm.locale.name}}</p>
+    
+	<div data-ng-if="!vm.locale.greetingMessage">
+		<div id="greetingPanel" style="z-index: 10" class="semiTransparent left" data-ng-include="vm.getViews().greetings"></div>
+		<div id="profilePanel" style="height: 97.5%; top: 1%" class="semiTransparent right" data-ng-include="vm.getViews().profiles"></div>
+	</div>
+	
+	<div data-ng-if="vm.locale.greetingMessage">
+		<div id="greetingPanel" style="z-index: 10; width: 98%" class="semiTransparent left" data-ng-include="vm.getViews().logoPanel"></div>
+		<div id="profilePanel" style="height: 76.5%; top: 22%" class="semiTransparent right" data-ng-include="vm.getViews().profiles"></div>
+	</div>
+	
+	<div id="newsPanel" class="semiTransparent left" data-ng-include="vm.getViews().news"></div>
+	
+	<div id="localInfo" class="semiTransparent left" data-ng-include="vm.getViews().localeWeather"></div>
+	
+	<div id="otherWeather" class="semiTransparent left" data-ng-include="vm.getViews().locales"></div>
+	
+	<div id="errorDialog" title="Error"></div>
 </div>

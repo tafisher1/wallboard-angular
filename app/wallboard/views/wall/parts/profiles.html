@@ -1,0 +1,12 @@
+ <div class="profile" data-ng-repeat="employee in vm.locale.employees">
+  <div class="profileHeader">{{employee.firstName + ' ' + employee.lastName}}</div>
+  <hr />
+  <div class="profileImage">
+    <img data-ng-src="{{employee.profileImageUrl}}" />
+  </div>
+  <div class="profileBlurb">{{employee.biography}}</div>
+</div>
+
+<div id="tabs-profiles">
+  <div class="profile-content" id="tabs-profiles-content"></div>
+</div>
