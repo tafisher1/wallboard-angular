@@ -1,14 +1,18 @@
 <table>
 	<tr>
 		<th colspan=2><div class="localHeader">{{vm.locale.name}}</div></th>
-		<!-- <th><div class="localTime">{{vm.locale.time}}</div></th>-->
+		<th>
+		  <div class="localTime">
+		    <!-- TODO -->
+		  </div>
+		</th>
 	</tr>
 	<tr>
 		<td id="localWeather">
 			<table id="{{vm.locale.name}}" class="local">
 				<tr>
 					<td><div id="weatherHeader">Current</div></td>
-					<td class="localImage"><img data-ng-src="http://s.imwx.com/v.20120328.084208/img/wxicon/120/{{vm.locale.weather.condition}}.png" /></td>
+					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.condition)}}" /></td>
 					<td class="localTemp">{{vm.locale.weather.currentTemp}}</td>
 				</tr>
 			</table>
@@ -17,10 +21,10 @@
 			<table id="{{vm.locale.name}}" class="local">
 				<tr>
 					<td><div id="weatherHeader">Tomorrow</div></td>
-					<td class="localImage"><img data-ng-src="http://s.imwx.com/v.20120328.084208/img/wxicon/120/{{vm.locale.weather.tomorrowCondition}}.png" /></td>
+					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.tomorrowCondition)}}" /></td>
 					<td class="forecastTemp">
-						<div style="text-shadow: 2px 2px #ff1919">{{vm.locale.weather.tomorrowHigh}}</div>
-						<div style="text-shadow: 2px 2px #6699cc">{{vm.locale.weather.tomorrowLow}}</div>
+						<div class="high">{{vm.locale.weather.tomorrowHigh}}</div>
+						<div class="low">{{vm.locale.weather.tomorrowLow}}</div>
 					</td>
 				</tr>
 			</table>
@@ -29,10 +33,10 @@
 			<table id="{{vm.locale.name}}" class="local">
 				<tr>
 					<td><div id="weatherHeader">{{vm.locale.weather.dayAfterDate}}</div></td>
-					<td class="localImage"><img data-ng-src="http://s.imwx.com/v.20120328.084208/img/wxicon/120/{{vm.locale.weather.dayAfterCondition}}.png" /></td>
+					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.dayAfterCondition)}}" /></td>
 					<td class="forecastTemp">
-						<div style="text-shadow: 2px 2px #ff1919">{{vm.locale.weather.dayAfterHigh}}</div>
-						<div style="text-shadow: 2px 2px #6699cc">{{vm.locale.weather.dayAfterLow}}</div>
+						<div class="high">{{vm.locale.weather.dayAfterHigh}}</div>
+						<div class="low">{{vm.locale.weather.dayAfterLow}}</div>
 					</td>
 				</tr>
 			</table>

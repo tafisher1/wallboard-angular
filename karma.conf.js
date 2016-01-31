@@ -9,11 +9,10 @@
                 'app/bower_components/angular-mocks/angular-mocks.js',
                 'app/bower_components/angular-resource/angular-resource.js',
                 
-                'app/wallboard/wallboard.module.js',
-                'app/wallboard/components/**/*.js',
-                'app/wallboard/views/**/*.module.js',
-                'app/wallboard/views/**/*.js',
                 'app/wallboard/*.js',
+                'app/wallboard/components/**/*.module.js',
+                'app/wallboard/components/**/*.js',
+                'app/wallboard/views/**/*.js',
                 
                 'app/everest-admin/components/**/*.js',
                 'app/everest-admin/views/**/*.module.js',

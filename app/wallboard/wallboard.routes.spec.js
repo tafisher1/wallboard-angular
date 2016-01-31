@@ -6,7 +6,10 @@ describe('wallboard.routes', function() {
     }));
     
     it('should have the template set to home.html for /home', inject(function($route) {
-        expect($route.routes['/'].templateUrl).toEqual('views/home/home.html');
+    	var route = $route.routes['/'];
+    	expect(route.templateUrl).toEqual('views/home/home.html');
+    	expect(route.controller).toEqual('HomeController');
+    	expect(route.controllerAs).toEqual('vm');
     }));
 
     it('should have the template set to wall.html for /wall/:localeName/home', inject(function($route) {

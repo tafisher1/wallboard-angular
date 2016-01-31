@@ -7,6 +7,9 @@
 			'ngRoute',
 			'ngResource',
 			'everest.rest',
+			'html.sanitize',
+			'format.percent',
+			'wallboard.directives'
 		]);
 	
 })();

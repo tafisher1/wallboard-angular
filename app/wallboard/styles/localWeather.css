@@ -49,3 +49,9 @@
 	-ms-transform: translate(0, 50px); /* IE 9 */
 	-webkit-transform: translate(0, 50px); /* Safari and Chrome */
 }
+.forecastTemp > .high {
+	text-shadow: 2px 2px #ff1919;
+}
+.forecastTemp > .low {
+	text-shadow: 2px 2px #6699cc
+}

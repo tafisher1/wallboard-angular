@@ -1,20 +1,18 @@
-<div id="tabs-news" >
+<div id="tabs-news" class="sectionContent active">
   <div class="news-content" id="tabs-news-content">
     <div class="news-item" data-ng-repeat="newsItem in vm.locale.news">
-      <span class="title">{{newsItem.title}}</span>
-      <span class="link">{{newsItem.link}}</span>
-      <span class="content">{{newsItem.contentSnippet}}</span>
-      <span class="title"></span>
+      <h3>
+        <span class="title" data-ng-bind-html="newsItem.title | sanitize"></span>
+        <br>
+        <small>
+          <a class="link" data-ng-href="{{newsItem.link}}">{{newsItem.link}}</a>
+        </small>
+      </h3>
+      <div class="news-item-text-content">
+	    <p class="content" data-ng-bind-html="newsItem.shortDescription | sanitize"></p>
+      </div>
     </div>
   </div>
 </div>
-<!-- 
-  <c:if test="${stockTickersEnabled}">
-  <div id="tabs-tickers">
-  	<div id="tickerHeader">Stock Info</div>
-	<div id="tabs-tickers-content">
-		<%@ include file="../parts/stockTickers.jsp" %>
-	</div>
-  </div>
-  </c:if>
--->
+
+<div id="tabs-tickers" class="sectionContent" data-ng-include="vm.getViews().stocks"></div>

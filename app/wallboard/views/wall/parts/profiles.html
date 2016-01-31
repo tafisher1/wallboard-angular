@@ -1,4 +1,4 @@
- <div class="profile" data-ng-repeat="employee in vm.locale.employees">
+ <div class="profile sectionContent" data-ng-class="{active:$first}" data-ng-repeat="employee in vm.locale.employees">
   <div class="profileHeader">{{employee.firstName + ' ' + employee.lastName}}</div>
   <hr />
   <div class="profileImage">

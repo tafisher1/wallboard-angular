@@ -21,6 +21,7 @@
 		var vm = this;
 		vm.allLocales = [];
 		vm.getViews = getViews;
+		vm.getWeatherIcon = getWeatherIcon;
 		vm.locale = {};
 		
 		//////////////////////
@@ -89,8 +90,19 @@
 				logoPanel		: '/app/wallboard/views/wall/parts/logoPanel.html',
 				news			: '/app/wallboard/views/wall/parts/news.html',
 				profiles		: '/app/wallboard/views/wall/parts/profiles.html',
-				stockTickers	: '/app/wallboard/views/wall/parts/stockTickers.html'
+				stocks			: '/app/wallboard/views/wall/parts/stockTickers.html'
 			};
+		}
+		
+		/**
+		 * @name getWeatherIcon
+		 * @memberOf Controllers.WallController
+		 * @desc converts a iconName to its weather icon URL and returns the value.
+		 */
+		function getWeatherIcon(iconName) {
+			if (iconName) {
+				return 'http://s.imwx.com/v.20120328.084208/img/wxicon/120/' + iconName + '.png';
+			}
 		}
 		
 		/**

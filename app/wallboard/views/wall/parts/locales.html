@@ -1,6 +1,6 @@
 <table id="{{locale.name}}" class="locale" data-ng-repeat="locale in vm.allLocales">
 	<tr>
-		<td class="localeImage"><img data-ng-src="http://s.imwx.com/v.20120328.084208/img/wxicon/120/{{locale.weather.condition}}.png" /></td>
+		<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(locale.weather.condition)}}" /></td>
 		<td class="localeTemp">{{locale.weather.currentTemp}}</td>
 		<!-- <td class="localeTime">${locale.time}</td> -->
 		<td class="localeName">{{locale.name}}</td>
