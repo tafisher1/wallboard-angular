@@ -6,13 +6,51 @@
             'everest.admin','ngMockE2E'
         ]).run(function ($httpBackend) {
         console.log($httpBackend);
+
+        //employee locale calls
+        $httpBackend.whenGET(/\/api\/data\/employees\/1\/locale/)
+            .respond(200, getIndividualEmployeeLocale(1));
+        $httpBackend.whenGET(/\/api\/data\/employees\/2\/locale/)
+            .respond(200, getIndividualEmployeeLocale(2));
+        $httpBackend.whenGET(/\/api\/data\/employees\/3\/locale/)
+            .respond(200, getIndividualEmployeeLocale(3));
+
+        //employee service calls
+        $httpBackend.whenGET(/\/api\/data\/employees\/1/)
+            .respond(200, getIndividualEmployeeResponse(1));
+        $httpBackend.whenGET(/\/api\/data\/employees\/2/)
+            .respond(200, getIndividualEmployeeResponse(2));
+
+        var employee3 = getIndividualEmployeeResponse(3);
+        employee3.profileImageUrl = undefined;
+        $httpBackend.whenGET(/\/api\/data\/employees\/3/)
+            .respond(200, employee3);
+
         $httpBackend.whenGET(/\/api\/data\/employees/
-        ).respond(200, employeeResponse);
+            ).respond(200, getEmployeeResponse());
 
         $httpBackend.whenGET(/views/).passThrough();
     });
 
-    var employeeResponse = {
+    function getIndividualEmployeeResponse(id) {
+        return {
+            firstName: 'First' + id,
+            lastName: 'Last' + id,
+            title: 'Title' + id,
+            emailAddress: 'Email' + id,
+            workPhone: 'Work Phone' + id,
+            cellPhone: 'Cell Phone' + id,
+            biography: 'Bio' + id,
+            profileImageUrl: '/image/' + id + '.jpg',
+        };
+    }
+
+    function getIndividualEmployeeLocale(id) {
+        return {name: 'Locale' + id};
+    }
+
+    function getEmployeeResponse() {
+        return {
         '_embedded': {
             'employees': [
               {
@@ -71,4 +109,5 @@
             }
         }
     };
+    }
 })();

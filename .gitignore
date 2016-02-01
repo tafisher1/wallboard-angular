@@ -8,6 +8,7 @@ target
 src/main/webapp/META-INF
 .orig
 test-output/
+npm-debug.log
 
 logs/*
 !.gitkeep

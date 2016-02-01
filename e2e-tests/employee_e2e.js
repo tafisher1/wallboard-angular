@@ -18,10 +18,18 @@ var EmployeePage = function() {
         return this.findTableCell(row, col).getText();
     };
 
+    this.getViewButtonInRow = function (row) {
+        return this.findTableCell(row, 4).all(by.className('btn')).get(0);
+    };
+
+    this.getDeleteButtonInRow = function(row) {
+        return this.findTableCell(row, 4).all(by.className('btn')).get(1);
+    };
+
 };
 
 describe('employee page', function() {
-    beforeEach(function() {
+    beforeAll(function() {
         browser.addMockModule('everest.rest.service.mock', function () {
             angular.module('everest.rest.service.mock');
         });
@@ -29,10 +37,13 @@ describe('employee page', function() {
 
     var employee = new EmployeePage();
 
+    beforeAll(function() {
+        employee.getPage();
+    });
+
     describe('summary table', function() {
 
         it('should have the expected table headers', function() {
-            employee.getPage();
 
             expect(employee.findTableHeader(0)).toEqual('First Name');
             expect(employee.findTableHeader(1)).toEqual('Last Name');
@@ -42,43 +53,50 @@ describe('employee page', function() {
         });
 
         it('row 1 should have the expected values', function() {
-            employee.getPage();
-
-            expect(employee.findTableCellText(0,0)).toEqual('First1');
-            expect(employee.findTableCellText(0,1)).toEqual('Last1');
-            expect(employee.findTableCellText(0,2)).toEqual('Title1');
-            expect(employee.findTableCellText(0,3)).toEqual('email1');
-
-            var buttonCell = employee.findTableCell(0,4);
-            expect(buttonCell.all(by.tagName('button')).get(0).getText()).toEqual('View/Edit');
-            expect(buttonCell.all(by.tagName('button')).get(1).getText()).toEqual('Delete');
+            checkTableRow(employee, 0);
         });
 
         it('row 2 should have the expected values', function() {
-            employee.getPage();
-
-            expect(employee.findTableCellText(1,0)).toEqual('First2');
-            expect(employee.findTableCellText(1,1)).toEqual('Last2');
-            expect(employee.findTableCellText(1,2)).toEqual('Title2');
-            expect(employee.findTableCellText(1,3)).toEqual('email2');
-
-            var buttonCell = employee.findTableCell(1,4);
-            expect(buttonCell.all(by.tagName('button')).get(0).getText()).toEqual('View/Edit');
-            expect(buttonCell.all(by.tagName('button')).get(1).getText()).toEqual('Delete');
+            checkTableRow(employee, 1);
         });
 
         it('row 3 should have the expected values', function() {
-            employee.getPage();
+            checkTableRow(employee, 2);
+        });
 
-            expect(employee.findTableCellText(2,0)).toEqual('First3');
-            expect(employee.findTableCellText(2,1)).toEqual('Last3');
-            expect(employee.findTableCellText(2,2)).toEqual('Title3');
-            expect(employee.findTableCellText(2,3)).toEqual('email3');
+        describe('View Edit Button Action', function() {
+            beforeEach(function () {
+                employee.getPage();
+            });
+            it('the first employee button should go to the first employee page', function() {
+                employee.getViewButtonInRow(0).click();
+                expect(browser.getLocationAbsUrl()).toMatch('/employee/1');
+            });
 
-            var buttonCell = employee.findTableCell(2,4);
-            expect(buttonCell.all(by.tagName('button')).get(0).getText()).toEqual('View/Edit');
-            expect(buttonCell.all(by.tagName('button')).get(1).getText()).toEqual('Delete');
+            it('the second employee button should go to the second employee page', function() {
+                employee.getViewButtonInRow(1).click();
+                expect(browser.getLocationAbsUrl()).toMatch('/employee/2');
+            });
+
+            it('the thrid employee button should go to the third employee page', function() {
+                employee.getViewButtonInRow(2).click();
+                expect(browser.getLocationAbsUrl()).toMatch('/employee/3');
+            });
         });
 
     });
 });
+
+function checkTableRow(employee, row) {
+
+    var id = row + 1;
+    expect(employee.findTableCellText(row,0)).toEqual('First' + id);
+    expect(employee.findTableCellText(row,1)).toEqual('Last' + id);
+    expect(employee.findTableCellText(row,2)).toEqual('Title' + id);
+    expect(employee.findTableCellText(row,3)).toEqual('email' + id);
+
+    expect(employee.getViewButtonInRow(row).getText()).toEqual('View/Edit');
+    expect(employee.getViewButtonInRow(row).getAttribute('href')).toMatch(new RegExp('#/employee/' +
+         id + '$'));
+    expect(employee.getDeleteButtonInRow(row).getText()).toEqual('Delete');
+}

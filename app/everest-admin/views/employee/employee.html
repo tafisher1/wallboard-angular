@@ -13,7 +13,7 @@
             <td>{{item.lastName}}</td>
             <td>{{item.title}}</td>
             <td>{{item.emailAddress}}</td>
-            <td><button>View/Edit</button><button>Delete</button></td>
+            <td><a data-ng-href='{{employee.getEditUrl(item._links.self.href)}}' class='btn btn-default'>View/Edit</a><a class='btn btn-default'>Delete</a></td>
         </tr>
     </tbody>
 </table>
