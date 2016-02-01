@@ -3,32 +3,32 @@
  */
 (function() {
 	'use strict';
-	
+
 	angular
 		.module('everest.rest')
 		.factory('everestService', everestService);
-	
-	everestService.$inject = ['$http', '$log']; 
-	
+
+	everestService.$inject = ['$http', '$log'];
+
 	/**
 	 * @namespace EverestService
 	 * @memberOf Factories
 	 */
 	function everestService($http, $log) {
-	
+
 	    // TODO Configure these elsewhere
 	    var EVEREST_URL = 'http://127.0.0.1:8080/api';
 	    var EVEREST_TOKEN = '5d89az-x8a7q264-115z9fpq-91acq4';
-	    
+
 	    var service = {
 	        get 			: get,
 	        getAllLocales	: getAllLocales,
 	        getLocaleByName : getLocaleByName
 	    };
-	    
+
 	    return service;
 	    //////////////////////
-	    
+
 	    /**
 	     * @name get
 	     * @memberOf Factories.EverestService
@@ -44,10 +44,10 @@
 	                'X-AUTH-TOKEN': EVEREST_TOKEN
 	            }
 	        });
-	
+
 	        return request.then(handleSuccess, handleFailure);
 	    }
-	
+
 	    /**
 	     * @name getAllLocales
 	     * @memberOf Factories.EverestService
@@ -61,7 +61,7 @@
 	    			return response._embedded.locales;
 	    		});
 	    }
-	    
+
 	    /**
 	     * @name getLocaleByName
 	     * @memberOf Factories.EverestService
@@ -81,7 +81,7 @@
 	    			}
 	    		});
 	    }
-	
+
 	    /**
 	     * @name Handler method for all successful HTTP requests
 	     * @memberOf Factories.EverestService
@@ -91,7 +91,7 @@
 	    function handleFailure(response) {
 	        $log.error(response);
 	    }
-	    
+
 	    /**
 	     * @name handleSuccess
 	     * @memberOf Factories.EverestService

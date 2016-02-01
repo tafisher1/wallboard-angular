@@ -1,13 +1,6 @@
 describe('Employee Controller', function() {
     beforeEach(module('employee.view'));
 
-    var $controller;
-
-    beforeEach(inject(function(_$controller_) {
-        $controller = _$controller_;
-    }));
-
-    var testee;
     var employeeService = {};
     beforeEach(function () {
         employeeService.listEmployees = function() {
@@ -19,10 +12,19 @@ describe('Employee Controller', function() {
         };
     });
 
-    it('data should be filled from the employee service when crated', function() {
-        var employeeController = $controller('EmployeeController',
+    var employeeController;
+    beforeEach(inject(function ($controller) {
+        employeeController = $controller('EmployeeController',
             {employeeService: employeeService});
+    }));
+
+    it('data should be filled from the employee service when crated', function() {
         expect(employeeController.data).toEqual('test data');
+    });
+
+    it('getEditURL should pull the employee id of a hateos url', function() {
+        expect(employeeController.getEditUrl('http://some.domain.com/path/path/path/1'))
+            .toEqual('#/employee/1');
     });
 
 });
