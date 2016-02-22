@@ -68,6 +68,9 @@
       "browser": false,
       "by": false,
       "spyOn" : false,
-      "beforeAll": false
+      "beforeAll": false,
+      "jasmine": false,
+      "protractor": false,
+      "driver": false
     }
 }

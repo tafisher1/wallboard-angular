@@ -2,12 +2,14 @@ exports.config = {
     allScriptsTimeout: 11000,
 
     specs: [
+
     '*.js',
-    '**/*.js'
+    '**/*.js',
+
   ],
 
     capabilities: {
-        'browserName': 'firefox'
+        browserName: 'firefox',
     },
 
     baseUrl: 'http://localhost:8000/app/everest-admin/',
@@ -15,6 +17,6 @@ exports.config = {
     framework: 'jasmine',
 
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 30000
-    }
+        defaultTimeoutInterval: 30000,
+    },
 };

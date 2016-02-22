@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -9,19 +9,20 @@
 
     /* @ngInject */
     function ViewEmployeeController($routeParams, employeeService) {
-        var vm = this;
-        vm.data = {};
-        vm.locale = {};
-        vm.defaultEmployeeImage = 'images/person.jpg';
+        var _this = this;
+        _this.data = {};
+        _this.locale = {};
+        _this.defaultEmployeeImage = 'images/person.jpg';
+        _this.id = $routeParams.id;
         activate();
 
         function activate() {
-            employeeService.getEmployee($routeParams.id).then(function(data) {
-                vm.data = data;
+            employeeService.getEmployee(_this.id).then(function (data) {
+                _this.data = data;
             });
 
-            employeeService.getEmployeeLocale($routeParams.id).then(function(data) {
-                vm.locale = data;
+            employeeService.getEmployeeLocale(_this.id).then(function (data) {
+                _this.locale = data;
             });
         }
     }
