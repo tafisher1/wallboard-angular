@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -12,7 +12,8 @@
         var service = {
             listEmployees: listEmployees,
             getEmployee: getEmployee,
-            getEmployeeLocale: getEmployeeLocale
+            getEmployeeLocale: getEmployeeLocale,
+            updateEmployee:updateEmployee,
         };
 
         return service;
@@ -27,6 +28,12 @@
 
         function getEmployeeLocale(employeeId) {
             return everestService.get('/data/employees/' + employeeId + '/locale');
+        }
+
+        function updateEmployee(employeeId, employee, locale) {
+            var updatedEmployee = employee;
+            updatedEmployee.locale = locale;
+            return everestService.put('/data/employees/' + employeeId, updatedEmployee);
         }
 
     }
