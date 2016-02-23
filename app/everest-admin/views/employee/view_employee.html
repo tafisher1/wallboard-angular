@@ -1,0 +1,37 @@
+<ol class='breadcrumb'>
+    <li><a href='#/employee'>Employee</a></li>
+    <li class='active'>{{employee.data.firstName}} {{employee.data.lastName}}</li>
+</ol>
+<div class='page-header'>
+    <div class="btn-group">
+  <button class="btn btn-lg btn-default dropdown-toggle header-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+{{employee.data.firstName}} {{employee.data.lastName}} <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+        <li>  <a >Edit</a></li>
+            <li><a >Delete</a></li>
+  </ul>
+</div>
+
+
+</div>
+<div class='row'>
+    <div class='col-md-6'>
+        <div id='personalInfo'>
+            <h2>Personal Info</h2>
+            <div id='title'>Title : {{employee.data.title}}</div>
+            <div id='biography'>Biography : {{employee.data.biography}}</div>
+        </div>
+        <div id='contactInfo'>
+            <H2>Contact Info</H2>
+            <div id='location'>Location : {{employee.locale.name}}</div>
+            <div id='email'>Email : {{employee.data.emailAddress}}</div>
+            <div id="workPhone">Work Phone : {{employee.data.workPhone}}</div>
+            <div id="cellPhone">Cell Phone : {{employee.data.cellPhone}}</div>
+        </div>
+    </div>
+    <div id='imageSection' class='col-md-6'>
+        <img  data-ng-src='{{employee.data.profileImageUrl ? employee.data.profileImageUrl : employee.defaultEmployeeImage}}' class='img-responsive'/>
+        <div id='imageUrl'>Image Url : <a data-ng-if='employee.data.profileImageUrl' data-ng-href='{{employee.data.profileImageUrl}}'>{{employee.data.profileImageUrl}}</a></div>
+    </div>
+</div>
