@@ -102,7 +102,7 @@ var EditEmployeePage = function () {
         return this.getSelectedLocale().getAttribute('label');
     };
 
-    this.selectLocaleWithLabel = function (id) {
+    this.selectLocaleWithIndex = function (id) {
         var options = this.getLocaleSelectInput().all(by.tagName('option')).get(id - 1).click();
     };
 
@@ -325,7 +325,7 @@ describe('edit employee page', function () {
         item = editEmployeePage.getBiographyInput();
         editEmployeePage.updateInputValue(item, 'Bio' + newId);
 
-        editEmployeePage.selectLocaleWithLabel(newId);
+        editEmployeePage.selectLocaleWithIndex(newId);
 
         item = editEmployeePage.getEmailInput();
         editEmployeePage.updateInputValue(item, 'Email' + newId + '@xpanxion.com');
@@ -413,7 +413,7 @@ describe('edit employee page', function () {
     function checkBreadCrumb(id) {
 
         var employeesCrumb = editEmployeePage.getBreadCrumbLink(0);
-        expect(employeesCrumb.getText()).toEqual('Employee');
+        expect(employeesCrumb.getText()).toEqual('Employees');
         expect(employeesCrumb.getAttribute('href')).toMatch('#/employee');
 
         var employeeCrumb = editEmployeePage.getBreadCrumbLink(1);

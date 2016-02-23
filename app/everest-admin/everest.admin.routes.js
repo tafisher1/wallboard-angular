@@ -24,8 +24,14 @@
             controllerAs:'employee',
         });
 
+        $routeProvider.when('/new/employee', {
+            templateUrl: 'views/employee/add-edit_employee.html',
+            controller:'AddEmployeeController',
+            controllerAs:'employee',
+        });
+
         $routeProvider.when('/employee/:id/edit', {
-            templateUrl: 'views/employee/edit_employee.html',
+            templateUrl: 'views/employee/add-edit_employee.html',
             controller:'EditEmployeeController',
             controllerAs:'employee',
         });

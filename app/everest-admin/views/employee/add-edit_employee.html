@@ -1,7 +1,7 @@
 <ol class='breadcrumb'>
-    <li><a href='#/employee'>Employee</a></li>
-    <li><a data-ng-href='#/employee/{{employee.id}}'>{{::employee.data.firstName}} {{::employee.data.lastName}}</a>
-    <li class='active'>Edit</li>
+    <li><a href='#/employee'>Employees</a></li>
+    <li data-ng-if='employee.pageName === "Edit"'><a data-ng-href='#/employee/{{employee.id}}'>{{::employee.data.firstName}} {{::employee.data.lastName}}</a>
+    <li class='active'>{{employee.pageName}}</li>
 </ol>
 <form class='form-horizontal'>
 <div class='page-header'>
@@ -18,7 +18,7 @@
         </div>
         <div class='col-md-offset-7 col-md-2'>
             <a class="btn btn-lg btn-default" data-ng-href='#/employee/{{employee.id}}'>Cancel</a>
-            <button class='btn btn-lg btn-default' data-ng-click='employee.updateEmployee()'>Save</button>
+            <button class='btn btn-lg btn-default' data-ng-click='employee.saveEmployee()'>Save</button>
         </div>
 
     </div>

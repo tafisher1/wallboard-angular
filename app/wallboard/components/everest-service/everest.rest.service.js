@@ -23,6 +23,7 @@
         var service = {
             get: get,
             put: put,
+            post: post,
             getAllLocales: getAllLocales,
             getLocaleByName: getLocaleByName,
         };
@@ -51,6 +52,18 @@
         function put(url, data) {
             var reqeust = $http({
                 method: 'PUT',
+                url: EVEREST_URL + url,
+                headers: {
+                    'X-AUTH-TOKEN': EVEREST_TOKEN,
+                },
+                data: data,
+            });
+            return reqeust.then(handleSuccess, handleFailure);
+        }
+
+        function post(url, data) {
+            var reqeust = $http({
+                method: 'POST',
                 url: EVEREST_URL + url,
                 headers: {
                     'X-AUTH-TOKEN': EVEREST_TOKEN,
