@@ -26,6 +26,10 @@ var EmployeePage = function () {
         return this.findTableCell(row, 4).all(by.className('btn')).get(1);
     };
 
+    this.clickAddEmployeeButton = function () {
+        element(by.linkText('New Employee')).click();
+    };
+
 };
 
 describe('employee page', function () {
@@ -62,6 +66,11 @@ describe('employee page', function () {
 
         it('row 3 should have the expected values', function () {
             checkTableRow(employee, 2);
+        });
+
+        it('should go to the add employee page when the add employee link is clicked', function () {
+            employee.clickAddEmployeeButton();
+            expect(browser.getLocationAbsUrl()).toMatch('/new/employee');
         });
 
         describe('View Edit Button Action', function () {

@@ -54,6 +54,10 @@ describe('EditEmployeeController', function () {
         it('should have id set from route parms', function () {
             expect(employeeEditController.id).toEqual(123);
         });
+
+        it('should have page name set to edit', function () {
+            expect(employeeEditController.pageName).toEqual('Edit');
+        });
     });
 
     describe('update employee', function () {
@@ -65,7 +69,7 @@ describe('EditEmployeeController', function () {
                     .returnValue(getUpdateEmployeeSuccessfullPromise());
 
                 //when
-                employeeEditController.updateEmployee();
+                employeeEditController.saveEmployee();
 
                 //then
                 expect(employeeService.updateEmployee.calls.count()).toEqual(1);
@@ -83,7 +87,7 @@ describe('EditEmployeeController', function () {
                     .returnValue(getUpdateEmployeeFailPromise());
 
                 //when
-                employeeEditController.updateEmployee();
+                employeeEditController.saveEmployee();
 
                 //then
                 expect(employeeService.updateEmployee.calls.count()).toEqual(1);

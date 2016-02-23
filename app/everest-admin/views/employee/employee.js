@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -9,19 +9,19 @@
 
     /* @ngInject */
     function EmployeeController(employeeService) {
-        var vm = this;
-        vm.data = {};
-        vm.getEditUrl = getEditUrl;
+        var _this = this;
+        _this.data = {};
+        _this.getEditUrl = getEditUrl;
         activate();
 
         function activate() {
             employeeService.listEmployees().then(function (data) {
-                vm.data = data;
+                _this.data = data;
             });
         }
 
         function getEditUrl(hateosUrl) {
-            var id = hateosUrl.substring(hateosUrl.lastIndexOf('/'));
+            var id = employeeService.parseIdFromSelfLink(hateosUrl);
             return '#/employee' + id;
         }
     }
