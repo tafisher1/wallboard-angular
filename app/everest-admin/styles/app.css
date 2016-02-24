@@ -38,3 +38,7 @@ body {
     background-image: none;
     font-size: 4em;
 }
+
+.header-text {
+    font-size: 3em;
+}
