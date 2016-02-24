@@ -7,6 +7,8 @@ describe('Employee Service', function () {
         everestService = _everestService_;
         spyOn(everestService, 'get').and.returnValue('test data');
         spyOn(everestService, 'put').and.returnValue('updated employee data');
+        spyOn(everestService, 'post').and.returnValue('added employee data');
+
     }));
 
     it('listEmployees() should get a call to data/employees and get retun value from service',
@@ -46,6 +48,26 @@ describe('Employee Service', function () {
             var updatedEmployee = everestService.put.calls.argsFor(0)[1];
             expect(updatedEmployee).toEqual(employeeData);
             expect(updatedEmployee.locale).toEqual(locale);
+        }));
+
+    it('addEmployee() should call put to /data/employees with the new employee info',
+        inject(function (employeeService) {
+            var employeeData = {};
+            var locale = 'locale';
+
+            var response = employeeService.addEmployee(employeeData, locale);
+            expect(response).toEqual('added employee data');
+            expect(everestService.post.calls.count()).toEqual(1);
+            expect(everestService.post.calls.argsFor(0)[0]).toEqual('/data/employees');
+            var updatedEmployee = everestService.post.calls.argsFor(0)[1];
+            expect(updatedEmployee).toEqual(employeeData);
+            expect(updatedEmployee.locale).toEqual(locale);
+        }));
+
+    it('parseIdFromSelfLink should return the id portion of an employee self link',
+        inject(function (employeeService) {
+            expect(employeeService.parseIdFromSelfLink('http://localhost/api/data/employee/1'))
+            .toEqual('/1');
         }));
 
 });

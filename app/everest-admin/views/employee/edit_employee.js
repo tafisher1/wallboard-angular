@@ -13,11 +13,12 @@
     function EditEmployeeController($routeParams, employeeService, localeService,
          $location, $window) {
         var _this = this;
+        _this.pageName = 'Edit';
         _this.data = {};
         _this.locale = {};
         _this.allLocales = {};
         _this.id = $routeParams.id;
-        _this.updateEmployee = updateEmployee;
+        _this.saveEmployee = updateEmployee;
 
         activate();
 

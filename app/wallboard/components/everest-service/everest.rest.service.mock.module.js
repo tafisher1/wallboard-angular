@@ -78,6 +78,21 @@
                         return [200, data];
                     });
 
+        $httpBackend.whenPOST(/\/api\/data\/employees/)
+                    .respond(function (method, url, data) {
+                        var obj = JSON.parse(data);
+
+                        if (autoFail(obj)) {
+                            return error;
+                        }
+
+                        if (checkValidEmployeePutForErrors(obj, 1)) {
+                            return error;
+                        }
+
+                        return [200, getIndividualEmployeeResponse(1)];
+                    });
+
         $httpBackend.whenGET(/views/).passThrough();
     });
 
@@ -177,6 +192,11 @@
             cellPhone: 'Cell Phone' + id,
             biography: 'Bio' + id,
             profileImageUrl: 'http://127.0.0.1:8080/image/' + id + '.jpg',
+            _links:{
+                self:{
+                    href: 'http://127.0.0.1:8080/api/data/employees/1',
+                },
+            },
         };
     }
 

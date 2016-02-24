@@ -14,6 +14,8 @@
             getEmployee: getEmployee,
             getEmployeeLocale: getEmployeeLocale,
             updateEmployee:updateEmployee,
+            addEmployee:addEmployee,
+            parseIdFromSelfLink: parseIdFromSelfLink,
         };
 
         return service;
@@ -34,6 +36,16 @@
             var updatedEmployee = employee;
             updatedEmployee.locale = locale;
             return everestService.put('/data/employees/' + employeeId, updatedEmployee);
+        }
+
+        function addEmployee(employee, locale) {
+            var addedEmployee = employee;
+            addedEmployee.locale = locale;
+            return everestService.post('/data/employees', addedEmployee);
+        }
+
+        function parseIdFromSelfLink(link) {
+            return link.substring(link.lastIndexOf('/'));
         }
 
     }

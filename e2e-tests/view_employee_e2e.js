@@ -270,7 +270,7 @@ describe('View Employee Page', function () {
     function checkBreadCrumb(id) {
 
         var employeeCrumb = viewEmployeePage.getBreadCrumbRootLink();
-        expect(employeeCrumb.getText()).toEqual('Employee');
+        expect(employeeCrumb.getText()).toEqual('Employees');
         expect(employeeCrumb.getAttribute('href')).toMatch('#/employee');
 
         var currentCrumb = viewEmployeePage.getCurrentCrumb();
