@@ -11,7 +11,7 @@ addons:
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - sudo apt-get install chromium-browser
+  - sudo apt-get -y install chromium-browser
   - npm start > /dev/null &
   - npm run update-webdriver
   - sleep 1 # give server time to start
