@@ -28,7 +28,7 @@
                     $window.alert('Error while adding employee');
                 } else {
                     var id = employeeService.parseIdFromSelfLink(data._links.self.href);
-                    $location.path('/employee' + id);
+                    $location.path('/employee/' + id);
                 }
             });
         }

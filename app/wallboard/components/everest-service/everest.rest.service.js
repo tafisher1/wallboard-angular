@@ -26,6 +26,7 @@
             post: post,
             getAllLocales: getAllLocales,
             getLocaleByName: getLocaleByName,
+            doDelete:doDelete,
         };
 
         return service;
@@ -69,6 +70,17 @@
                     'X-AUTH-TOKEN': EVEREST_TOKEN,
                 },
                 data: data,
+            });
+            return reqeust.then(handleSuccess, handleFailure);
+        }
+
+        function doDelete(url) {
+            var reqeust = $http({
+                method: 'DELETE',
+                url: EVEREST_URL + url,
+                headers: {
+                    'X-AUTH-TOKEN': EVEREST_TOKEN,
+                },
             });
             return reqeust.then(handleSuccess, handleFailure);
         }

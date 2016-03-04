@@ -101,9 +101,35 @@ var ViewEmployeePage = function () {
         this.getPageHeaderDropDownEditButton().click();
     };
 
+    this.clickDeleteButton = function () {
+        this.clickHeaderButton();
+        this.getPageHeaderDropDownDeleteButton().click();
+    };
+
+    this.getDeleteModalElement = function() {
+        return element(by.className('modal-dialog'));
+    };
+
+    this.getDeleteModalTitleText = function () {
+        return element(by.className('modal-title')).getText();
+    };
+
+    this.getDeleteModalBodyText = function() {
+        return element(by.className('modal-body')).getText();
+    };
+
+    this.getDeleteModalOkButton = function() {
+        return element(by.className('modal-footer')).element(by.buttonText('OK'));
+    };
+
+    this.getDeleteModalCancelButton = function() {
+        return element(by.className('modal-footer')).element(by.buttonText('Cancel'));
+    };
+
 };
 
 var viewEmployeePage = new ViewEmployeePage();
+var EC = protractor.ExpectedConditions;
 
 describe('View Employee Page', function () {
     beforeAll(function () {
@@ -113,7 +139,7 @@ describe('View Employee Page', function () {
     });
 
     describe('View Employee 1', function () {
-        beforeAll(function () {
+        beforeEach(function () {
             viewEmployeePage.getPage(1);
         });
 
@@ -140,10 +166,15 @@ describe('View Employee Page', function () {
         it('goes to the edit page when edit button is clicked', function () {
             checkNavigationToEdit(1);
         });
+
+        it('properly invokes and uses the delte modal', function() {
+            checkDeleteModalNoError(1);
+        });
+
     });
 
     describe('View Employee 2', function () {
-        beforeAll(function () {
+        beforeEach(function () {
             viewEmployeePage.getPage(2);
         });
 
@@ -171,10 +202,14 @@ describe('View Employee Page', function () {
             checkNavigationToEdit(2);
         });
 
+        it('properly invokes and uses the delte modal', function() {
+            checkDeleteModalNoError(2);
+        });
+
     });
 
     describe('View Employee 3', function () {
-        beforeAll(function () {
+        beforeEach(function () {
             viewEmployeePage.getPage(3);
         });
 
@@ -202,7 +237,69 @@ describe('View Employee Page', function () {
             checkNavigationToEdit(3);
         });
 
+        it('properly invokes and uses the delte modal', function() {
+            checkDeleteModalError(3);
+        });
     });
+
+    function checkDeleteModalNoError(id) {
+        prelimDeleteModalCheck(id);
+
+        viewEmployeePage.clickDeleteButton();
+        viewEmployeePage.getDeleteModalOkButton().click();
+        browser.wait(EC.stalenessOf(viewEmployeePage.getDeleteModalElement(), 1000));
+
+        checkLog('DELETE EMPLOYEE ' + id, true);
+        expect(browser.getLocationAbsUrl()).toMatch('/employee');
+    }
+
+    function checkDeleteModalError(id) {
+        prelimDeleteModalCheck(id);
+
+        viewEmployeePage.clickDeleteButton();
+        viewEmployeePage.getDeleteModalOkButton().click();
+        var EC = protractor.ExpectedConditions;
+
+        browser.wait(EC.alertIsPresent(), 500);
+        expect(browser.switchTo().alert().getText())
+            .toEqual('Error while deleting employee');
+        browser.switchTo().alert().dismiss();
+
+        browser.wait(EC.stalenessOf(viewEmployeePage.getDeleteModalElement(), 1000));
+        expect(browser.getLocationAbsUrl()).toMatch('/employee');
+    }
+
+    function prelimDeleteModalCheck(id) {
+        viewEmployeePage.clickDeleteButton();
+        browser.wait(
+            EC.and(EC.presenceOf(viewEmployeePage.getDeleteModalElement()),
+            EC.textToBePresentInElement(viewEmployeePage.getDeleteModalElement(), 'First' + id)),
+                5000);
+        expect(viewEmployeePage.getDeleteModalBodyText())
+            .toEqual('Are you sure you want to delete First' + id + ' Last' + id + ' ?');
+        expect(viewEmployeePage.getDeleteModalTitleText())
+                .toEqual('Delete Employee First' + id + ' Last' + id);
+        viewEmployeePage.getDeleteModalCancelButton().click();
+        browser.wait(EC.stalenessOf(viewEmployeePage.getDeleteModalElement(), 1000));
+        checkLog('DELETE EMPLOYEE', false);
+
+    }
+
+    function checkLog(message, expectFound) {
+        browser.manage().logs().get('browser').then(function(browserLog) {
+            var foundIt = false;
+            browser.waitForAngular();
+
+            for (var log in browserLog) {
+                if (browserLog[log].message.includes(message)) {
+                    foundIt = true;
+                    break;
+                }
+            }
+            expect(foundIt).toEqual(expectFound);
+        });
+
+    }
 
     function checkImageSectionWithOutUrl() {
         expect(viewEmployeePage.getEmployeeImage().getAttribute('src'))
