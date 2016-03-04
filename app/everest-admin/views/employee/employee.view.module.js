@@ -5,5 +5,6 @@
         .module('employee.view', [
             'everest.employee',
             'everest.locale',
+            'ui.bootstrap',
         ]);
 })();

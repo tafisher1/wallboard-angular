@@ -8,7 +8,7 @@ describe('Employee Service', function () {
         spyOn(everestService, 'get').and.returnValue('test data');
         spyOn(everestService, 'put').and.returnValue('updated employee data');
         spyOn(everestService, 'post').and.returnValue('added employee data');
-
+        spyOn(everestService, 'doDelete').and.returnValue('deleted employee data');
     }));
 
     it('listEmployees() should get a call to data/employees and get retun value from service',
@@ -67,7 +67,15 @@ describe('Employee Service', function () {
     it('parseIdFromSelfLink should return the id portion of an employee self link',
         inject(function (employeeService) {
             expect(employeeService.parseIdFromSelfLink('http://localhost/api/data/employee/1'))
-            .toEqual('/1');
+            .toEqual('1');
+        }));
+
+    it('deleteEmployee() should call delete on /data/employee/{id} and return any data',
+        inject(function (employeeService) {
+            var response = employeeService.deleteEmployee(123);
+            expect(response).toEqual('deleted employee data');
+            expect(everestService.doDelete.calls.count()).toEqual(1);
+            expect(everestService.doDelete.calls.argsFor(0)[0]).toEqual('/data/employees/123');
         }));
 
 });

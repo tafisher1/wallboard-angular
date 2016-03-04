@@ -1,5 +1,6 @@
 describe('Everest Rest Service', function () {
-    var $httpBackend, getRequestHandler, putRequestHandler, postRequestHandler;
+    var $httpBackend, getRequestHandler, putRequestHandler,
+     postRequestHandler, deleteRequestHandler;
     beforeEach(module('everest.rest'));
 
     beforeEach(inject(function (_$httpBackend_) {
@@ -19,6 +20,12 @@ describe('Everest Rest Service', function () {
                 function (headers) {
                     return headers['X-AUTH-TOKEN'] === 'ad3dfe-1d5a8d7e-d8a7d8e9-dadadw';
                 }).respond(200, 'test post response');
+
+        deleteRequestHandler = $httpBackend.whenDELETE('http://127.0.0.1:8080/api/test',
+                function (headers) {
+                    return headers['X-AUTH-TOKEN'] === 'ad3dfe-1d5a8d7e-d8a7d8e9-dadadw';
+                }).respond(200, 'test delete response');
+
     }));
 
     afterEach(function () {
@@ -101,6 +108,30 @@ describe('Everest Rest Service', function () {
 
             });
 
+        }));
+    });
+
+    describe('DELETE', function () {
+
+        afterEach(function () {
+            $httpBackend.flush();
+        });
+
+        it('Should return a valid response on delete to /test', inject(function (everestService) {
+            everestService.doDelete('/test').then(function (data) {
+                expect(data).toEqual('test delete response');
+            });
+        }));
+
+        it('Should log any errors as an error', inject(function (everestService, $log) {
+            deleteRequestHandler.respond(500, 'anError');
+
+            everestService.doDelete('/test').then(function (data) {
+                expect(data).toBeUndefined();
+                expect($log.error.logs.length).toEqual(1);
+                expect($log.error.logs[0][0].status).toEqual(500);
+                expect($log.error.logs[0][0].data).toEqual('anError');
+            });
         }));
     });
 

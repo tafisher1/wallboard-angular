@@ -93,6 +93,22 @@
                         return [200, getIndividualEmployeeResponse(1)];
                     });
 
+        $httpBackend.whenDELETE(/\/api\/data\/employees\/1/)
+            .respond(function () {
+                $log.warn('DELETE EMPLOYEE 1');
+                return [200, {}];
+            });
+
+        $httpBackend.whenDELETE(/\/api\/data\/employees\/2/)
+        .respond(function () {
+            $log.warn('DELETE EMPLOYEE 2');
+            return [200, {}];
+        });
+        $httpBackend.whenDELETE(/\/api\/data\/employees\/3/)
+        .respond(function () {
+            $log.warn('DELETE EMPLOYEE 3');
+            return error;
+        });
         $httpBackend.whenGET(/views/).passThrough();
     });
 
