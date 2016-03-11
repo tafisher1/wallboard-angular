@@ -6,5 +6,6 @@ angular
 		'ngRoute',
         'employee.view',
         'ngResource',
+        'locale.view'
     ]);
 })();

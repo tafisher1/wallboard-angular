@@ -1,0 +1,16 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th><a class='btn btn-default' >New Locale</a>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="item in locales.data">
+            <td>{{item.name}}</td>
+            <td>{{item.code}}</td>
+            <td><a class='btn btn-default'>View/Edit</a><a class='btn btn-default'>Delete</a></td>
+        </tr>
+    </tbody>
+</table>
