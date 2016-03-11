@@ -36,6 +36,12 @@
             controllerAs:'employee',
         });
 
+        $routeProvider.when('/locales', {
+            templateUrl: 'views/locale/locales.html',
+            controller: 'LocalesController',
+            controllerAs: 'locales'
+        });
+
         $routeProvider.otherwise({
             redirectTo: '/home',
         });

@@ -41,4 +41,12 @@ describe('everest.admin.routes', function () {
                 expect(route.controllerAs).toEqual('employee');
             }));
 
+    it('should have the template set to locales.html for /locales',
+            inject(function ($route) {
+                var route = $route.routes['/locales'];
+                expect(route.templateUrl).toEqual('views/locale/locales.html');
+                expect(route.controller).toEqual('LocalesController');
+                expect(route.controllerAs).toEqual('locales');
+            }));
+
 });
