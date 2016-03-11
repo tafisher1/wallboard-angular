@@ -121,15 +121,18 @@
         return checkFieldValid(dataObj.firstName, 'First' + id, 'First Name') ||
             checkFieldValid(dataObj.lastName, 'Last' + id, 'Last Name') ||
             checkFieldValid(dataObj.title, 'Title' + id, 'Title') ||
-            checkFieldValid(dataObj.emailAddress, 'Email' + id + '@xpanxion.com', 'Email') ||
-            checkFieldValid(dataObj.workPhone, 'Work Phone' + id, 'Work Phone') ||
-            checkFieldValid(dataObj.cellPhone, 'Cell Phone' + id, 'Cell Phone') ||
-            checkFieldValid(dataObj.biography, 'Bio' + id, 'Biography') ||
+                    checkFieldValid(dataObj.biography, 'Bio' + id, 'Biography') ||
             checkFieldValid(dataObj.profileImageUrl, 'http://127.0.0.1:8080/image/' +
                 id  + '.jpg', 'Image Url') ||
             checkFieldValid(dataObj.locale, 'http://127.0.0.1:8080/api/data/locales/' +
-                id, 'Locale');
+                id, 'Locale') || checkValidEmployeeContactInfo(dataObj, id);
 
+    }
+
+    function checkValidEmployeeContactInfo(dataObj, id) {
+        return checkFieldValid(dataObj.emailAddress, 'Email' + id + '@xpanxion.com', 'Email') ||
+            checkFieldValid(dataObj.workPhone, 'Work Phone' + id, 'Work Phone') ||
+            checkFieldValid(dataObj.cellPhone, 'Cell Phone' + id, 'Cell Phone');
     }
 
     function checkFieldValid(field, expected, fieldName) {
@@ -147,6 +150,7 @@
                 locales: [
                     {
                         name:'Locale1',
+                        code:'1',
                         _links:{
                             self:{
                                 href:'http://127.0.0.1:8080/api/data/locales/1',
@@ -155,6 +159,7 @@
                     },
                     {
                         name:'Locale2',
+                        code:'2',
                         _links:{
                             self:{
                                 href:'http://127.0.0.1:8080/api/data/locales/2',
@@ -163,6 +168,7 @@
                     },
                     {
                         name:'Locale3',
+                        code:'3',
                         _links:{
                             self:{
                                 href:'http://127.0.0.1:8080/api/data/locales/3',
@@ -171,6 +177,7 @@
                     },
                     {
                         name:'Locale4',
+                        code:'4',
                         _links:{
                             self:{
                                 href:'http://127.0.0.1:8080/api/data/locales/4',
@@ -179,6 +186,7 @@
                     },
                     {
                         name:'Locale5',
+                        code:'5',
                         _links:{
                             self:{
                                 href:'http://127.0.0.1:8080/api/data/locales/5',
@@ -187,6 +195,7 @@
                     },
                     {
                         name:'Locale6',
+                        code:'6',
                         _links:{
                             self:{
                                 href:'http://127.0.0.1:8080/api/data/locales/6',
