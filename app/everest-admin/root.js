@@ -29,7 +29,9 @@ function RootController() {
     function activate() {
         model.options = [
             {name: 'Home', url: '#/home', active: 'active'},
-            {name: 'Employees', url: '#/employee', active: ''}];
+            {name: 'Employees', url: '#/employee', active: ''},
+            {name: 'Locales', url: '#/locales', active: ''}
+        ];
     }
 }
 
