@@ -16,6 +16,7 @@
             updateEmployee:updateEmployee,
             addEmployee:addEmployee,
             parseIdFromSelfLink: parseIdFromSelfLink,
+            deleteEmployee: deleteEmployee,
         };
 
         return service;
@@ -44,8 +45,12 @@
             return everestService.post('/data/employees', addedEmployee);
         }
 
+        function deleteEmployee(employeeId) {
+            return everestService.doDelete('/data/employees/' + employeeId);
+        }
+
         function parseIdFromSelfLink(link) {
-            return link.substring(link.lastIndexOf('/'));
+            return link.substring(link.lastIndexOf('/') + 1);
         }
 
     }

@@ -4,12 +4,14 @@ exports.config = {
     specs: [
 
     '*.js',
-    '**/*.js',
-
+    '**/*.js'
   ],
 
     capabilities: {
-        browserName: 'firefox',
+        browserName: 'chrome',
+        loggingPrefs: {
+            browser: 'INFO'
+        }
     },
 
     baseUrl: 'http://localhost:8000/app/everest-admin/',
