@@ -7,7 +7,10 @@ exports.config = {
   ],
 
     capabilities: {
-        'browserName': 'firefox'
+        browserName: 'chrome',
+        loggingPrefs: {
+            browser: 'INFO'
+        }
     },
 
     baseUrl: 'http://localhost:8000/app/everest-admin/',
@@ -15,6 +18,6 @@ exports.config = {
     framework: 'jasmine',
 
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 30000
-    }
+        defaultTimeoutInterval: 30000,
+    },
 };

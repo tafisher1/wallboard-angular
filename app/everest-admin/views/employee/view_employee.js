@@ -3,49 +3,49 @@
 
     angular
         .module('employee.view')
-        .controller('EmployeeController', EmployeeController);
+        .controller('ViewEmployeeController', ViewEmployeeController);
 
-    EmployeeController.$inject = ['employeeService', '$uibModal'];
+    ViewEmployeeController.$inject = ['$routeParams', 'employeeService', '$uibModal', '$location'];
 
     /* @ngInject */
-    function EmployeeController(employeeService, $uibModal) {
+    function ViewEmployeeController($routeParams, employeeService, $uibModal, $location) {
         var _this = this;
         _this.data = {};
+        _this.locale = {};
+        _this.defaultEmployeeImage = 'images/person.jpg';
+        _this.id = $routeParams.id;
         _this.openDeleteModal = openDeleteModal;
         activate();
 
         function activate() {
-            employeeService.listEmployees().then(function (data) {
+            employeeService.getEmployee(_this.id).then(function (data) {
                 _this.data = data;
-                for (var item in _this.data._embedded.employees) {
-                    if (true) {
-                        _this.data._embedded.employees[item].id =
-                            employeeService.parseIdFromSelfLink(_this.data
-                                ._embedded.employees[item]._links.self.href);
-                    }
-                }
+            });
+
+            employeeService.getEmployeeLocale(_this.id).then(function (data) {
+                _this.locale = data;
             });
         }
 
-        function openDeleteModal(id, name) {
+        function openDeleteModal() {
             var modalInstance = $uibModal.open({
                 templateUrl: 'views/employee/modal/delete_employee_modal.html',
                 controller: 'DeleteEmployeeModal',
                 controllerAs: 'employee',
                 resolve: {
                     id: function () {
-                        return id;
+                        return _this.id;
                     },
 
                     name: function () {
-                        return name;
+                        return _this.data.firstName + ' ' + _this.data.lastName;
                     },
                 },
 
             });
 
             modalInstance.result.then(function () {
-                activate();
+                $location.path('/employee');
             });
 
         }

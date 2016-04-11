@@ -5,6 +5,7 @@
             <th>Last Name</th>
             <th>Title</th>
             <th>Email</th>
+            <th><a class='btn btn-default' href="#/new/employee">New Employee</a>
         </tr>
     </thead>
     <tbody>
@@ -13,7 +14,7 @@
             <td>{{item.lastName}}</td>
             <td>{{item.title}}</td>
             <td>{{item.emailAddress}}</td>
-            <td><button>View/Edit</button><button>Delete</button></td>
+            <td><a data-ng-href='#/employee/{{item.id}}' class='btn btn-default'>View/Edit</a><a class='btn btn-default' data-ng-click='employee.openDeleteModal(item.id, item.firstName + " " + item.lastName)'>Delete</a></td>
         </tr>
     </tbody>
 </table>
