@@ -1,7 +1,7 @@
 <table id="{{locale.name}}" class="locale" data-ng-repeat="locale in vm.allLocales">
 	<tr>
-		<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(locale.weather.condition)}}" /></td>
-		<td class="localeTemp">{{locale.weather.currentTemp}}</td>
+		<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(locale.weather.currentWeatherIcon)}}" /></td>
+		<td class="localeTemp">{{locale.weather.currentTemp | number:0 }}&deg;</td>
 		<!-- <td class="localeTime">${locale.time}</td> -->
 		<td class="localeName">{{locale.name}}</td>
 	</tr>

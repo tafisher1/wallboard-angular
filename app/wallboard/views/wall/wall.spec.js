@@ -68,7 +68,7 @@ describe('wall.controller', function() {
     		}));
     		
     		it('should return the correct url when iconName is set', function() {
-    			expect(controller.getWeatherIcon('42')).toEqual('http://s.imwx.com/v.20120328.084208/img/wxicon/120/42.png')
+    			expect(controller.getWeatherIcon('01d')).toEqual('http://openweathermap.org/img/w/01d.png')
     		});
     		
     		it('should return nothing when when iconName is not set', function() {

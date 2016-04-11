@@ -59,7 +59,11 @@
 					});
 				}
 				
-				$('body').attr('style', 'background-image: url("' + vm.locale.backgroundUrl + '")');
+				if (null != vm.locale.backgroundUrl) {
+					$('body').attr('style', 'background-image: url("' + vm.locale.backgroundUrl + '")');
+				} else {
+					// TODO - Configure default behavior
+				}
 			});
 			
 			// Load the locale and weather information for all other locales
@@ -101,7 +105,7 @@
 		 */
 		function getWeatherIcon(iconName) {
 			if (iconName) {
-				return 'http://s.imwx.com/v.20120328.084208/img/wxicon/120/' + iconName + '.png';
+				return 'http://openweathermap.org/img/w/' + iconName + '.png';
 			}
 		}
 		

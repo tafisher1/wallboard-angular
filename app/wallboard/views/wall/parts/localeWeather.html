@@ -12,8 +12,8 @@
 			<table id="{{vm.locale.name}}" class="local">
 				<tr>
 					<td><div id="weatherHeader">Current</div></td>
-					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.condition)}}" /></td>
-					<td class="localTemp">{{vm.locale.weather.currentTemp}}</td>
+					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.currentWeatherIcon)}}" /></td>
+					<td class="localTemp">{{vm.locale.weather.currentTemp | number:0 }}&deg;</td>
 				</tr>
 			</table>
 		</td>
@@ -21,10 +21,10 @@
 			<table id="{{vm.locale.name}}" class="local">
 				<tr>
 					<td><div id="weatherHeader">Tomorrow</div></td>
-					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.tomorrowCondition)}}" /></td>
+					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.tomorrowWeatherIcon)}}" /></td>
 					<td class="forecastTemp">
-						<div class="high">{{vm.locale.weather.tomorrowHigh}}</div>
-						<div class="low">{{vm.locale.weather.tomorrowLow}}</div>
+						<div class="high">{{vm.locale.weather.tomorrowHigh | number:0 }}&deg;</div>
+						<div class="low">{{vm.locale.weather.tomorrowLow | number:0 }}&deg;</div>
 					</td>
 				</tr>
 			</table>
@@ -33,10 +33,10 @@
 			<table id="{{vm.locale.name}}" class="local">
 				<tr>
 					<td><div id="weatherHeader">{{vm.locale.weather.dayAfterDate}}</div></td>
-					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.dayAfterCondition)}}" /></td>
+					<td class="localImage"><img data-ng-src="{{vm.getWeatherIcon(vm.locale.weather.dayAfterWeatherIcon)}}" /></td>
 					<td class="forecastTemp">
-						<div class="high">{{vm.locale.weather.dayAfterHigh}}</div>
-						<div class="low">{{vm.locale.weather.dayAfterLow}}</div>
+						<div class="high">{{vm.locale.weather.dayAfterHigh | number:0 }}&deg;</div>
+						<div class="low">{{vm.locale.weather.dayAfterLow | number:0 }}&deg;</div>
 					</td>
 				</tr>
 			</table>
