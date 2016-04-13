@@ -31,7 +31,7 @@
         </div>
     </div>
     <div id='imageSection' class='col-md-6'>
-        <img  data-ng-src='{{employee.data.profileImageUrl ? employee.data.profileImageUrl : employee.defaultEmployeeImage}}' class='img-responsive'/>
-        <div id='imageUrl'>Image Url : <a data-ng-if='employee.data.profileImageUrl' data-ng-href='{{employee.data.profileImageUrl}}'>{{employee.data.profileImageUrl}}</a></div>
+        <img  data-ng-src='{{employee.data.profileImageUrl|defaultValue:employee.defaultEmployeeImage}}' class='img-responsive'/>
+        <div id='imageUrl'>Image Url : <a data-ng-href='{{employee.data.profileImageUrl|defaultValue:''}}'>{{employee.data.profileImageUrl|defaultValue:''}}</a></div>
     </div>
 </div>

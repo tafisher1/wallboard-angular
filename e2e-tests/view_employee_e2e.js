@@ -141,6 +141,7 @@ describe('View Employee Page', function () {
     describe('View Employee 1', function () {
         beforeEach(function () {
             viewEmployeePage.getPage(1);
+            browser.waitForAngular();
         });
 
         it('has a breadcrumb as expected', function () {
@@ -176,6 +177,7 @@ describe('View Employee Page', function () {
     describe('View Employee 2', function () {
         beforeEach(function () {
             viewEmployeePage.getPage(2);
+            browser.waitForAngular();
         });
 
         it('has a breadcrumb as expected', function () {
@@ -211,6 +213,7 @@ describe('View Employee Page', function () {
     describe('View Employee 3', function () {
         beforeEach(function () {
             viewEmployeePage.getPage(3);
+            browser.waitForAngular();
         });
 
         it('has a breadcrumb as expected', function () {
