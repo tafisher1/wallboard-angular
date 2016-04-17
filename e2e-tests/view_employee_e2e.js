@@ -141,7 +141,7 @@ describe('View Employee Page', function () {
     describe('View Employee 1', function () {
         beforeEach(function () {
             viewEmployeePage.getPage(1);
-            browser.waitForAngular();
+            browser.sleep(500);
         });
 
         it('has a breadcrumb as expected', function () {
@@ -177,7 +177,7 @@ describe('View Employee Page', function () {
     describe('View Employee 2', function () {
         beforeEach(function () {
             viewEmployeePage.getPage(2);
-            browser.waitForAngular();
+            browser.sleep(500);
         });
 
         it('has a breadcrumb as expected', function () {
@@ -213,7 +213,7 @@ describe('View Employee Page', function () {
     describe('View Employee 3', function () {
         beforeEach(function () {
             viewEmployeePage.getPage(3);
-            browser.waitForAngular();
+            browser.sleep(500);
         });
 
         it('has a breadcrumb as expected', function () {
@@ -309,7 +309,7 @@ describe('View Employee Page', function () {
             .toMatch('/images/person.jpg');
         expect(viewEmployeePage.getImageUrlField().getText())
             .toEqual('Image Url :');
-        expect(viewEmployeePage.getImageUrlFieldLink().isPresent()).toEqual(false);
+        expect(viewEmployeePage.getImageUrlFieldLink().getAttribute('href')).toEqual(null);
     }
 
     function checkImageSectionWithUrl(id) {
