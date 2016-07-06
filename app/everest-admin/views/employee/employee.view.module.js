@@ -6,5 +6,6 @@
             'everest.employee',
             'everest.locale',
             'ui.bootstrap',
+            'default.value.filter'
         ]);
 })();

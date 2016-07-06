@@ -49,4 +49,12 @@ describe('everest.admin.routes', function () {
                 expect(route.controllerAs).toEqual('locales');
             }));
 
+    it('should have the template set to view_locale.html for /locale/:id',
+            inject(function ($route) {
+                var route = $route.routes['/locale/:id'];
+                expect(route.templateUrl).toEqual('views/locale/view_locale.html');
+                expect(route.controller).toEqual('ViewLocaleController');
+                expect(route.controllerAs).toEqual('locale');
+            }));
+
 });

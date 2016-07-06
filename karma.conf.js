@@ -17,6 +17,8 @@ module.exports = function (config) {
                 'app/wallboard/*.js',
 
                 'app/everest-admin/components/**/*.js',
+                'app/everest-admin/filters/*.module.js',
+                'app/everest-admin/filters/*.js',
                 'app/everest-admin/views/**/*.module.js',
                 'app/everest-admin/views/**/*.js',
                 'app/everest-admin/*.js',

@@ -1,0 +1,55 @@
+<ol class='breadcrumb'>
+    <li><a href='#/locales'>Locales</a></li>
+    <li class='active'>{{locale.data.name}}</li>
+</ol>
+<div class='page-header'>
+    <div class="btn-group">
+  <button class="btn btn-lg btn-default dropdown-toggle header-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+{{locale.data.name}}<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+        <li>  <a data-ng-href=''>Edit</a></li>
+            <li><a data-ng-click='' >Delete</a></li>
+  </ul>
+</div>
+
+</div>
+<div class='row'>
+    <div class='col-md-3'>
+        <div id='logistics'>
+            <h2>Logistics</h2>
+            <div id='code'><strong>Code :</strong> {{locale.data.code}}</div>
+            <div id='message'><strong>Message :</strong> {{locale.data.greetingMessage | defaultValue:'None'}}</div>
+            <div id='timeZone'><strong>Time Zone:</strong> {{locale.data.timeZone}}</div>
+        </div>
+        <div id='dataSources'>
+            <H2>Data Sources</H2>
+            <div id='weatherCode'><strong>Weather Code :</strong> {{locale.data.weatherCode}}</div>
+            <div id='news'>
+                <strong>News Keywords :</strong>
+                <ul class="list-group">
+                    <li class="list-group-item" data-ng-repeat='keyword in locale.newsKeywords'>{{keyword}}</li>
+                </ul>
+            </div>
+            <div id="stocks">
+                <strong>Stock Symobls :</strong>
+                <ul class="list-group">
+                    <li class="list-group-item" data-ng-repeat='stock in locale.stocks'>{{stock}}</li>
+                <ul>
+            </div>
+        </div>
+    </div>
+    <div id='display' class='col-md-offset-3 col-md-6'>
+        <H2>Display</H2>
+
+        <h3>Theme</h3>
+        <div id="themeName"><strong>Name :</strong> {{locale.data.theme.name}}</div>
+        <div id="themeDescription"><strong>Description :</strong> {{locale.data.theme.description}}</div>
+        <h4>Background</h4>
+        <div style='width:300px'>
+            <img id='bgimage'  data-ng-src='{{locale.data.backgroundUrl|defaultValue:""}}' class='img-responsive'/>
+        </div>
+        <div id='imageUrl'><strong>Image Url :</strong> <a data-ng-href='{{locale.data.backgroundUrl|defaultValue:''}}'>{{locale.data.backgroundUrl|defaultValue:''}}</a></div>
+
+    </div>
+</div>

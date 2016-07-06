@@ -10,7 +10,7 @@
         <tr data-ng-repeat="item in locales.data">
             <td>{{item.name}}</td>
             <td>{{item.code}}</td>
-            <td><a class='btn btn-default'>View/Edit</a><a class='btn btn-default'>Delete</a></td>
+            <td><a class='btn btn-default' data-ng-href='#/locale/{{item.id}}'>View/Edit</a><a class='btn btn-default'>Delete</a></td>
         </tr>
     </tbody>
 </table>

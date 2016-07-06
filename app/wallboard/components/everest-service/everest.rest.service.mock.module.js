@@ -30,8 +30,6 @@
 
         $httpBackend.whenGET(/\/api\/data\/employees/
             ).respond(200, getEmployeeResponse());
-        $httpBackend.whenGET(/\/api\/data\/locales/
-        ).respond(200, getLocaleListResponse());
 
         $httpBackend.whenPUT(/\/api\/data\/employees\/1/)
             .respond(function (method, url, data) {
@@ -109,8 +107,48 @@
             $log.warn('DELETE EMPLOYEE 3');
             return error;
         });
+
+        $httpBackend.whenGET(/\/api\/data\/locales\/1/
+        ).respond(200, getLocaleResponse(1));
+
+        $httpBackend.whenGET(/\/api\/data\/locales\/2/
+        ).respond(200, getLocaleResponse(2));
+
+        $httpBackend.whenGET(/\/api\/data\/locales\/3/
+        ).respond(200, getLocaleResponse(3));
+
+        $httpBackend.whenGET(/\/api\/data\/locales\/4/
+        ).respond(200, getLocaleResponse(4));
+
+        $httpBackend.whenGET(/\/api\/data\/locales\/5/
+        ).respond(200, getLocaleResponse(5));
+
+        $httpBackend.whenGET(/\/api\/data\/locales\/6/
+        ).respond(200, getLocaleResponse(6));
+
+        $httpBackend.whenGET(/\/api\/data\/locales/
+        ).respond(200, getLocaleListResponse());
+
         $httpBackend.whenGET(/views/).passThrough();
     });
+
+    function getLocaleResponse(id) {
+        var locale = {
+            'backgroundUrl': 'http://127.0.0.1:8080/image/' + id + '.jpg',
+            'code': 'Code' + id,
+            'greetingMessage': 'Greeting' + id,
+            'name': 'Locale' + id,
+            'newsKeywords': 'news' + id + '1,news' + id + '2,news' + id + '3',
+            'stockSymbols': 'stock' + id + '1,stock' + id + '2,stock' + id + '3',
+            'timeZone': 'timezone' + id,
+            'weatherCode': 'weather' + id,
+            'theme': {
+                'name': 'theme' + id,
+                'description': 'description' + id
+            }
+        };
+        return locale;
+    }
 
     function autoFail(dataObj) {
         return dataObj.firstName === 'Fail';
