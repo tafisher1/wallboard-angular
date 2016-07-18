@@ -42,6 +42,12 @@
             controllerAs: 'locales'
         });
 
+        $routeProvider.when('/locale/:id', {
+            templateUrl: 'views/locale/view_locale.html',
+            controller: 'ViewLocaleController',
+            controllerAs: 'locale'
+        });
+
         $routeProvider.otherwise({
             redirectTo: '/home',
         });

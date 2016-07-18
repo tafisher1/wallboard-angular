@@ -1,7 +1,23 @@
 describe ('LocalesController', function() {
     beforeEach(module('locale.view'));
 
-    var localesOut = ['locale1', 'locale2'];
+    var localesOut = [
+        {
+            name:'locale1',
+            _links:{
+                    self:{
+                        href:'url/something/1'
+                    }
+                }
+        },
+        {
+            name:'locale2',
+            _links:{
+                    self:{
+                        href:'url/something/2'
+                    }
+                }
+        }];
 
     var localeService;
     beforeEach(inject(function (_localeService_) {
@@ -25,6 +41,8 @@ describe ('LocalesController', function() {
     describe('inital state', function() {
         it('should have data loaded from locale service', function() {
             expect(localesController.data).toEqual(localesOut);
+            expect(localesController.data[0].id).toEqual('1');
+            expect(localesController.data[1].id).toEqual('2');
         });
     });
 });

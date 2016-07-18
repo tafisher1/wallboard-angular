@@ -3,6 +3,7 @@
 
     angular
         .module('locale.view', [
-            'everest.locale'
+            'everest.locale',
+            'default.value.filter'
         ]);
 })();
